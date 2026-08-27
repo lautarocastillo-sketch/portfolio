@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lautaro Castillo — SSr Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-Thin.woff2') format('woff2');
+    font-weight: 100; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-Book.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-Italic.woff2') format('woff2');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-Medium.woff2') format('woff2');
+    font-weight: 500; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-SemiBolditalic.woff2') format('woff2');
+    font-weight: 600; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'PP Neue Montreal';
+    src: url('assets/fonts/PPNeueMontreal-Bold.woff2') format('woff2');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+  :root { --display-font: 'PP Neue Montreal', 'Inter', ui-sans-serif, system-ui, sans-serif; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+  .font-display { font-family: var(--display-font); font-weight: 400; }
+  .wrap { max-width: 1080px; margin-left: auto; margin-right: auto; width: 100%; }
+  section[id] { scroll-margin-top: 84px; }
+  .nav-link.is-active { background-color: rgb(0 0 0 / 0.08); }
+  #mobile-menu { transition: max-height 0.25s ease, opacity 0.2s ease; }
+</style>
+</head>
+<body class="bg-white text-[#17171c]">
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-black/5">
+    <div class="wrap flex items-center justify-between px-6 py-4 md:py-5">
+      <div class="flex gap-2 items-center">
+        <span class="bg-[#30e6e6] text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap">Portfolio 2026</span>
+        <span class="hidden sm:inline text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full whitespace-nowrap">Lautaro Castillo</span>
+      </div>
+
+      <nav class="hidden md:flex gap-2 items-center">
+        <a href="#about" class="nav-link text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full transition-colors hover:bg-black/5">About</a>
+        <a href="#method" class="nav-link text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full transition-colors hover:bg-black/5">Method</a>
+        <a href="#projects" class="nav-link text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full transition-colors hover:bg-black/5">Projects</a>
+      </nav>
+
+      <button id="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"
+        class="md:hidden relative w-9 h-9 flex flex-col items-center justify-center gap-[5px] rounded-full hover:bg-black/5 transition-colors">
+        <span class="menu-bar block w-5 h-[2px] bg-[#090909] transition-transform duration-200"></span>
+        <span class="menu-bar block w-5 h-[2px] bg-[#090909] transition-opacity duration-200"></span>
+        <span class="menu-bar block w-5 h-[2px] bg-[#090909] transition-transform duration-200"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 opacity-0 border-t border-black/5">
+      <nav class="flex flex-col p-4 gap-1 wrap">
+        <a href="#about" class="nav-link text-[#090909] text-sm font-medium px-4 py-3 rounded-lg transition-colors hover:bg-black/5">About</a>
+        <a href="#method" class="nav-link text-[#090909] text-sm font-medium px-4 py-3 rounded-lg transition-colors hover:bg-black/5">Method</a>
+        <a href="#projects" class="nav-link text-[#090909] text-sm font-medium px-4 py-3 rounded-lg transition-colors hover:bg-black/5">Projects</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="bg-black">
+    <div class="wrap px-6 py-16 md:py-28 flex flex-col gap-6">
+      <div class="flex flex-wrap gap-2">
+        <span class="bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full">Product designer</span>
+        <span class="bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full">UX/UI</span>
+        <span class="bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full">Figma + AI workflow</span>
+        <span class="bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full">Semi Senior</span>
+      </div>
+      <div class="flex flex-col-reverse md:flex-row gap-8 items-center md:items-start">
+        <div class="flex-1 flex flex-col gap-4 md:gap-6 text-white text-center md:text-left">
+          <h1 class="font-display text-4xl sm:text-5xl md:text-7xl leading-tight">
+            Lautaro Castillo<br>
+            <span class="text-[#30e6e6]">SSr Product Designer</span>
+          </h1>
+          <p class="text-base md:text-lg opacity-90 leading-snug max-w-xl mx-auto md:mx-0">
+            I design product systems that absorb business rules and market-specific regulatory variation — without losing consistency. I work with a workflow powered by Figma MCP and Claude.
+          </p>
+        </div>
+        <img src="https://www.figma.com/api/mcp/asset/49c8edd8-5bb2-47cb-87cf-75b40e65949b.png" alt="Lautaro Castillo" class="shrink-0 mx-auto md:mx-0 rounded-full object-cover w-32 h-32 sm:w-44 sm:h-44 md:w-[260px] md:h-[260px]" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-[#f2f2f7]">
+    <div class="wrap px-6 py-16 md:py-20 flex flex-col gap-6">
+      <span class="bg-[#090909] text-white text-xs font-medium px-3 py-1.5 rounded-full self-start">About Me</span>
+      <div class="flex flex-col lg:flex-row items-start lg:items-center gap-8">
+        <h2 class="font-display text-2xl md:text-3xl leading-tight flex-1">
+          I'm a graphic designer, 32 years old, specialized in UX/UI and product design
+        </h2>
+        <div class="bg-white border border-[#8e8e93] rounded-2xl p-6 md:p-8 flex-1">
+          <p class="text-base md:text-lg leading-relaxed text-[#070707]">
+            I started my career in Branding as a Graphic Designer and later specialized in UX/UI. Today, as a Product Designer at Darwoft, I focus on solving problems in complex, regulated systems for the healthcare sector. I bring a holistic vision to every team: keeping the brand's visual consistency while building the logic and structure that make the product work.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="bg-white">
+    <div class="wrap px-6 pt-16 md:pt-20 pb-10 flex flex-col gap-16">
+      <span class="bg-[#30e6e6] text-[#090909] text-xs font-medium px-3 py-1.5 rounded-full self-start">Projects</span>
+      <h2 class="font-display text-3xl md:text-5xl leading-tight">Some projects I've worked on...</h2>
+      <hr class="border-t border-[#e0e0e5]" />
+
+      <!-- PROJECT 1: MOOVEAR -->
+      <div class="flex flex-col gap-16">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="font-display text-5xl md:text-7xl shrink-0">1. Moovear</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1">How we optimized medical transport traceability to improve Moovear's profitability and service.</p>
+        </div>
+
+        <div class="bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
+          <h3 class="font-display text-2xl text-center">Transport management platform</h3>
+          <img src="https://www.figma.com/api/mcp/asset/22740756-e0ab-4f21-8649-06a480069603.png" alt="Transport management platform" class="border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
+        </div>
+        <hr class="border-t border-[#e0e0e5]" />
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">What is Moovear</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">It's a platform and mobile app for the Argentine market, designed for the end-to-end management of patient medical transport within the Occupational Risk Insurance (ART) system.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">Design decision</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">We built a complex product that adapted to the business's specific needs, drawing on patterns users already recognized (like Cabify or Uber) while tailoring them to each particular need. Every transport is now audited, making trips traceable and optimizing time and resources. The product is currently expanding.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <div>
+            <h3 class="font-display text-3xl md:text-4xl">Main User Flows</h3>
+            <p class="font-display text-xl md:text-2xl mt-6">1.1 Trip traceability for the driver.</p>
+          </div>
+          <div class="bg-[#f2f2f7] rounded-3xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+            <figure class="flex flex-col gap-4 items-center sm:items-start">
+              <figcaption class="text-base">Home Screen</figcaption>
+              <img src="https://www.figma.com/api/mcp/asset/198e838b-4253-436f-abf1-3c1757b5e5f7.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Home Screen" />
+            </figure>
+            <figure class="flex flex-col gap-4 items-center sm:items-start">
+              <figcaption class="text-base">Detail</figcaption>
+              <img src="https://www.figma.com/api/mcp/asset/2165269a-e0e2-4018-a498-ac1634b5a04d.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Detail" />
+            </figure>
+            <figure class="flex flex-col gap-4 items-center sm:items-start">
+              <figcaption class="text-base">Navigation</figcaption>
+              <img src="https://www.figma.com/api/mcp/asset/0be88b71-d70a-43e8-a86f-12c05dd64d0d.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Navigation" />
+            </figure>
+            <figure class="flex flex-col gap-4 items-center sm:items-start">
+              <figcaption class="text-base">Trip Reconciliation</figcaption>
+              <img src="https://www.figma.com/api/mcp/asset/5b7e5d95-e29f-460d-aada-dd8c279725cb.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Trip Reconciliation" />
+            </figure>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display text-4xl md:text-5xl tracking-tight">Some numbers...</h3>
+          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-center">
+            <div class="flex flex-col gap-3">
+              <p class="text-5xl md:text-7xl tracking-tight">700</p>
+              <p class="text-base md:text-xl">Trips per day that became audited</p>
+            </div>
+            <div class="flex flex-col gap-3">
+              <p class="text-5xl md:text-7xl tracking-tight">19600</p>
+              <p class="text-base md:text-xl">Trips per month that are traceable</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-t border-[#e0e0e5]" />
+
+      <!-- PROJECT 2: SAS MOBILE -->
+      <div class="flex flex-col gap-16">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="font-display text-5xl md:text-7xl shrink-0">2. SAS mobile</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1">From a lookup app to a self-service platform for workplace accidents</p>
+        </div>
+
+        <div class="flex flex-col gap-6">
+          <h3 class="font-display text-3xl md:text-4xl">Main User Flows</h3>
+          <p class="font-display text-xl md:text-2xl -mt-4">2.1 Home redesigns and dark mode</p>
+          <div class="bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+            <div class="flex flex-col gap-6">
+              <p class="text-base">Home Screen</p>
+              <div class="grid grid-cols-2 gap-4 max-w-[360px]">
+                <img src="https://www.figma.com/api/mcp/asset/bce70e88-5e7f-4cda-bf78-5e78bf8443b8.png" class="border-[3px] border-black rounded-2xl w-full" alt="Home light" />
+                <img src="https://www.figma.com/api/mcp/asset/bc2b1fe0-ec1f-4501-aeb3-3b7274ca10c1.png" class="border-[3px] border-black rounded-2xl w-full" alt="Home dark" />
+              </div>
+            </div>
+            <div class="flex flex-col gap-6">
+              <p class="text-base">Detail</p>
+              <div class="grid grid-cols-2 gap-4 max-w-[360px]">
+                <img src="https://www.figma.com/api/mcp/asset/8e20ffcd-09fa-440b-8992-cd0d34925043.png" class="border-[3px] border-black rounded-2xl w-full" alt="Detail light" />
+                <img src="https://www.figma.com/api/mcp/asset/370f02e9-5fed-48ab-beea-82da8bff3202.png" class="border-[3px] border-black rounded-2xl w-full" alt="Detail dark" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 class="font-display text-2xl md:text-3xl">Self-service features implemented</h3>
+        <div class="bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Reimbursement Request</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/da783331-2b87-4c68-8ff2-623a5d78eced.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursement Request" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Reimbursements Home Screen</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/06465c8f-9c80-4c92-b44c-c05b62821915.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursements Home Screen" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Orthopedic Part Request</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/aa942207-fee8-49bd-9656-eb0e8d0a1474.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Request" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Orthopedic Part Detail</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/7c4f6ef4-53ee-45a5-990f-e8aa4e28a382.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Detail" />
+          </figure>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">What is SAS Mobile</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">It's a mobile app for the Argentine market that allows tracking and managing one or more workplace accidents for an employee covered by an ART.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">Design decision</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">It started as an app whose only purpose was letting the employee check the status of a workplace claim. Features were gradually added and proposed, backed by strong benchmarking against similar healthcare products (like health-insurance apps), giving employees more self-service functions — reducing manual workload for case managers and making complex paperwork simple and traceable.</p>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="font-display text-4xl md:text-5xl tracking-tight">Some numbers...</h3>
+          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-center">
+            <div class="flex flex-col gap-3">
+              <p class="text-5xl md:text-7xl tracking-tight">183</p>
+              <p class="text-base md:text-xl">active users since going live</p>
+            </div>
+            <div class="flex flex-col gap-3">
+              <p class="text-5xl md:text-7xl tracking-tight">120</p>
+              <p class="text-base md:text-xl">New users in the last month</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-t border-[#e0e0e5]" />
+
+      <!-- PROJECT 3: MEDLAB -->
+      <div class="flex flex-col gap-16">
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+          <div class="font-display text-5xl md:text-7xl shrink-0">3. Medlab</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1">How we turned a telemedicine app into a complex HRMS.</p>
+        </div>
+
+        <div class="bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
+          <h3 class="font-display text-2xl text-center">Payslip management</h3>
+          <img src="https://www.figma.com/api/mcp/asset/441cd7f9-ea7b-4dfd-a5c2-1f9ed2f023df.png" alt="Payslip management" class="border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
+        </div>
+
+        <div>
+          <h3 class="font-display text-3xl md:text-4xl">Main User Flows</h3>
+          <p class="font-display text-xl md:text-2xl mt-6">3.1 Core function: requesting workplace leave</p>
+        </div>
+
+        <div class="bg-[#f2f2f7] rounded-2xl p-6 md:p-10 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Home Screen</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/41348077-642c-40f4-8557-62729be7ca75.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Home Screen" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Interactive Calendar</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/ea87984d-6cdd-4b0b-8efa-d69fa7398606.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Interactive Calendar" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Document Upload</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/b5997dad-4391-4bfb-953e-352ec3e429c5.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Document Upload" />
+          </figure>
+          <figure class="flex flex-col gap-4 items-center sm:items-start">
+            <figcaption class="text-base">Summary</figcaption>
+            <img src="https://www.figma.com/api/mcp/asset/89dff3cf-c4e7-4a5f-967c-1daafc905945.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Summary" />
+          </figure>
+        </div>
+
+        <hr class="border-t border-[#e0e0e5]" />
+
+        <div class="grid md:grid-cols-2 gap-10">
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">What is MedLab</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">MedLab is an end-to-end labor and medical management platform that connects employees and employers in one place. Through the app, workers can report absences, request leave and vacation with real-time tracking, access prescriptions and medical records, and manage payslips through viewing, signing, and downloading. It also keeps personnel files up to date and sends automatic notifications on the status of requests or appointments.</p>
+          </div>
+          <div class="flex flex-col gap-4">
+            <h3 class="font-display text-xl">Design decision</h3>
+            <p class="text-[#73737a] text-base leading-relaxed">Just like with SAS Mobile, MedLab started as an app whose only function was requesting and tracking medical and personal leave, paired with a platform where employers could view them. Improvements were gradually integrated, turning it into a human resources management platform, and the app into a personal-management tool that goes beyond simply requesting leave.</p>
+          </div>
+        </div>
+
+        <hr class="border-t border-[#e0e0e5]" />
+
+        <h2 class="font-display text-4xl md:text-6xl">UI and Design Systems</h2>
+
+        <div class="flex flex-col gap-4">
+          <h3 class="font-bold text-xl">Tokenization</h3>
+          <p class="text-[#73737a] text-base leading-relaxed">The system is built in a tokenized way, across two layers: primitives (color, spacing, and typography in their raw form, with no semantic meaning) and semantic tokens (which inherit from primitives and convey intent, e.g. color/status/approved or color/status/rejected). This structure keeps visual consistency across SAS Mobile, MedLab, and Traslada, and lets the system scale to new markets and brands without rewriting styles from scratch.</p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6">
+          <img src="https://www.figma.com/api/mcp/asset/1e5384a5-32b4-4fb2-9fb3-006102a4f67c.png" class="border border-black rounded-2xl w-full md:w-1/2 object-cover" alt="Tokens" />
+          <img src="https://www.figma.com/api/mcp/asset/44a49c3e-2a07-4c5e-a6aa-e22fc7b37b73.png" class="w-full md:w-1/2 object-contain" alt="Design system" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="method" class="bg-[#f2f2f7]">
+    <div class="wrap px-6 py-16 md:py-20 flex flex-col gap-6">
+      <p class="text-xl text-[#090909]">Method</p>
+      <h2 class="font-display text-4xl md:text-6xl">Design thinking powered by AI</h2>
+
+      <div class="w-full overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0">
+        <div class="bg-white border border-[#8e8e93] rounded-xl overflow-hidden min-w-[600px] md:min-w-0">
+          <div class="flex gap-4 items-center px-6 py-4 font-display text-base text-[#090909]">
+            <span class="w-[110px]">Stage</span>
+            <span class="w-[200px]">Tool</span>
+            <span class="flex-1">General use</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Research</span>
+            <span class="w-[200px] font-medium">Claude with web search + Deep Research</span>
+            <span class="flex-1 text-[#73737a]">Benchmarking and cited sources</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Audit</span>
+            <span class="w-[200px] font-medium">Claude in Chrome</span>
+            <span class="flex-1 text-[#73737a]">Live product analysis, usability</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Synthesis</span>
+            <span class="w-[200px] font-medium">Claude</span>
+            <span class="flex-1 text-[#73737a]">Turning findings into actionable reports</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Design</span>
+            <span class="w-[200px] font-medium">Figma MCP + Claude</span>
+            <span class="flex-1 text-[#73737a]">Concept exploration, testable flows</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Prototyping</span>
+            <span class="w-[200px] font-medium">Figma MCP → Claude Code → Vercel</span>
+            <span class="flex-1 text-[#73737a]">Clickable screens for fast validation</span>
+          </div>
+          <div class="border-t border-[#e0e0e5] flex gap-4 px-6 py-4 text-[13px]">
+            <span class="w-[110px] font-medium">Handoff</span>
+            <span class="w-[200px] font-medium">Figma + MCP / Dev Mode</span>
+            <span class="flex-1 text-[#73737a]">Design system connected to code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#090909]">
+    <div class="wrap px-6 pt-16 pb-10 flex flex-col items-center gap-6 text-white">
+      <p class="text-base font-medium">lautaro.castillo@darwoft.com</p>
+      <div class="bg-white/20 h-px w-full"></div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuBars = menuToggle.querySelectorAll('.menu-bar');
+    let menuOpen = false;
+
+    function setMenu(open) {
+      menuOpen = open;
+      menuToggle.setAttribute('aria-expanded', String(open));
+      if (open) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        mobileMenu.style.opacity = '1';
+        menuBars[0].style.transform = 'translateY(7px) rotate(45deg)';
+        menuBars[1].style.opacity = '0';
+        menuBars[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        mobileMenu.style.maxHeight = '0px';
+        mobileMenu.style.opacity = '0';
+        menuBars[0].style.transform = '';
+        menuBars[1].style.opacity = '1';
+        menuBars[2].style.transform = '';
+      }
+    }
+
+    menuToggle.addEventListener('click', () => setMenu(!menuOpen));
+    document.querySelectorAll('#mobile-menu a').forEach((link) => {
+      link.addEventListener('click', () => setMenu(false));
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768 && menuOpen) setMenu(false);
+    });
+
+    const sections = ['about', 'projects', 'method'].map((id) => document.getElementById(id)).filter(Boolean);
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveLink(id) {
+      navLinks.forEach((link) => {
+        link.classList.toggle('is-active', link.getAttribute('href') === '#' + id);
+      });
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => { if (entry.isIntersecting) setActiveLink(entry.target.id); });
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    );
+    sections.forEach((section) => observer.observe(section));
+  </script>
+</body>
+</html>
