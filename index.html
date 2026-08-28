@@ -6,7 +6,7 @@
 <title>Lautaro Castillo — SSr Product Designer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Red+Hat+Display:wght@600&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   @font-face {
@@ -51,10 +51,15 @@
   /* Lightbox */
   #lightbox { display: none; }
   #lightbox.is-open { display: flex; }
-  #lightbox-img { animation: lightbox-in 0.25s ease-out; }
+  #lightbox-img { animation: lightbox-in 0.2s ease-out; touch-action: pinch-zoom; cursor: zoom-in; transition: transform 0.15s ease-out; transform-origin: center center; }
+  #lightbox-img.is-zoomed { cursor: grab; }
+  #lightbox-img.is-panning { cursor: grabbing; transition: none; }
   @keyframes lightbox-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
   .zoomable-wrap { position: relative; }
   .zoomable-overlay { pointer-events: none; }
+  .lightbox-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 9999px; background: rgba(255,255,255,0.12); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 20px; transition: background-color 0.2s ease; }
+  .lightbox-nav-btn:hover { background: rgba(255,255,255,0.25); }
+  .lightbox-counter { position: absolute; top: 1rem; left: 1rem; color: rgba(255,255,255,0.7); font-size: 13px; }
 
   /* Scroll reveal */
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
@@ -65,18 +70,29 @@
   .token-switch.is-dark { background: #17171c; }
   .token-switch-knob { position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 9999px; background: #fff; transition: transform 0.25s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
   .token-switch.is-dark .token-switch-knob { transform: translateX(20px); background: #30e6e6; }
-  .token-preview-card { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
-  .token-btn { transition: transform 0.15s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
-  .token-btn:hover { transform: translateY(-2px); }
-  .token-btn:active { transform: translateY(0); }
-  .token-btn-arrow { display: inline-block; transition: transform 0.2s ease; }
-  .token-btn:hover .token-btn-arrow { transform: translateX(3px); }
-  .token-pill { transition: background-color 0.3s ease, color 0.3s ease; }
+
+  /* MedLab design-system token demo (primitives -> semantic, light/dark) */
+  #token-preview-card {
+    --tk-bg: #f8f8f9; --tk-card-bg: #ffffff; --tk-card-border: #bababf;
+    --tk-title-primary: #012e2e; --tk-title-secondary: #27272a; --tk-body: #616268;
+    --tk-disabled-text: #777880; --tk-primary: #012e2e; --tk-disabled-bg: #e8e8e9;
+    --tk-error: #dc223c; --tk-chevron: #012e2e;
+    background-color: var(--tk-bg);
+    transition: background-color 0.3s ease;
+  }
+  #token-preview-card[data-theme="dark"] {
+    --tk-bg: #001113; --tk-card-bg: #012e2e80; --tk-card-border: #012e2e;
+    --tk-title-primary: #ffffff; --tk-title-secondary: #ffffff; --tk-body: #ffffff;
+    --tk-disabled-text: #94949c; --tk-primary: #03dddd; --tk-disabled-bg: #94949c66;
+    --tk-error: #f7757e; --tk-chevron: #03dddd;
+  }
+  .token-input-label { font: 600 16px/1.4 'Red Hat Display', 'Inter', sans-serif; color: var(--tk-title-secondary); transition: color 0.3s ease; }
+  .token-input { height: 48px; border-radius: 16px; border: 1px solid var(--tk-card-border); background-color: var(--tk-card-bg); display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 16px; font: 700 14px/1.4 'Inter', sans-serif; letter-spacing: 0.14px; color: var(--tk-disabled-text); transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+  .token-input-caption { font: 400 12px/1.55 'Inter', sans-serif; letter-spacing: 0.025em; transition: color 0.3s ease; }
 
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
     #lightbox-img { animation: none; }
-    .token-btn:hover { transform: none; }
   }
 </style>
 </head>
@@ -375,32 +391,43 @@
           <img src="https://www.figma.com/api/mcp/asset/44a49c3e-2a07-4c5e-a6aa-e22fc7b37b73.png" class="zoomable w-full md:w-1/2 object-contain" alt="Design system" />
         </div>
 
-        <!-- LIVE TOKEN PREVIEW -->
+        <!-- LIVE TOKEN PREVIEW: real MedLab design-system component (Input), driven by primitive + semantic tokens -->
         <div class="reveal flex flex-col gap-4">
           <div class="flex items-center justify-between gap-4 flex-wrap">
-            <h3 class="font-bold text-xl">Tokens in action</h3>
+            <h3 class="font-bold text-xl">Tokens in action — Input component</h3>
             <button id="token-toggle" type="button" class="inline-flex items-center gap-3 text-sm font-medium" aria-pressed="false">
               <span id="token-toggle-label">Light mode</span>
               <span class="token-switch"><span class="token-switch-knob"></span></span>
             </button>
           </div>
-          <p class="text-[#73737a] text-base leading-relaxed">Same component, same semantic tokens — only the underlying values swap. Toggle it to see the theme layer at work.</p>
+          <p class="text-[#73737a] text-base leading-relaxed">A real component pulled from the MedLab design system (shared across SAS Mobile, MedLab and Traslada) — its states are driven entirely by primitive and semantic tokens. Toggle to see the theme layer swap live.</p>
 
-          <div id="token-preview-card" class="token-preview-card bg-[#f2f2f7] border border-[#8e8e93] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
-            <div class="flex flex-col gap-3">
-              <span id="token-pill" class="token-pill bg-[#1a7a4c] text-white text-xs font-medium px-3 py-1.5 rounded-full w-fit">Aprobado</span>
-              <span id="token-pill-2" class="token-pill bg-[#8e8e93]/20 text-[#17171c] text-xs font-medium px-3 py-1.5 rounded-full w-fit">Pendiente</span>
-            </div>
-            <div class="flex flex-wrap items-center gap-3">
-              <button id="token-btn-primary" type="button" class="token-btn bg-[#17171c] text-white text-sm font-medium pl-4 pr-3 py-2.5 rounded-full inline-flex items-center gap-2">
-                Volver al inicio <span class="token-btn-arrow">→</span>
-              </button>
-              <button id="token-btn-outline" type="button" class="token-btn bg-transparent text-[#17171c] border border-[#8e8e93] text-sm font-medium pl-4 pr-3 py-2.5 rounded-full inline-flex items-center gap-2">
-                Volver al inicio <span class="token-btn-arrow">→</span>
-              </button>
-              <button id="token-btn-small" type="button" class="token-btn bg-[#17171c] text-white text-xs font-medium pl-3 pr-2.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
-                Volver al inicio <span class="token-btn-arrow">→</span>
-              </button>
+          <div id="token-preview-card" class="rounded-2xl p-6 md:p-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Default -->
+              <div class="flex flex-col gap-2">
+                <span class="token-input-label">Label</span>
+                <div class="token-input"><span>Completed</span></div>
+              </div>
+              <!-- Filled -->
+              <div class="flex flex-col gap-2">
+                <span class="token-input-label">Label</span>
+                <div class="token-input" style="border-color: var(--tk-primary); color: var(--tk-title-secondary);">
+                  <span>Completed</span>
+                  <span aria-hidden="true" style="color: var(--tk-chevron);">✎</span>
+                </div>
+              </div>
+              <!-- Error -->
+              <div class="flex flex-col gap-2">
+                <span class="token-input-label">Label</span>
+                <div class="token-input" style="border-color: var(--tk-error); color: var(--tk-error);"><span>Completed</span></div>
+                <span class="token-input-caption" style="color: var(--tk-error);">Error Código</span>
+              </div>
+              <!-- Disabled -->
+              <div class="flex flex-col gap-2">
+                <span class="token-input-label" style="color: var(--tk-title-primary);">Label</span>
+                <div class="token-input" style="background-color: var(--tk-disabled-bg); color: var(--tk-disabled-text);"><span>Completed</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -466,8 +493,11 @@
 
   <!-- LIGHTBOX -->
   <div id="lightbox" class="fixed inset-0 z-[100] items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-10" role="dialog" aria-modal="true" aria-hidden="true">
+    <span id="lightbox-counter" class="lightbox-counter"></span>
     <button id="lightbox-close" type="button" aria-label="Cerrar" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/80 hover:text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-2xl leading-none">✕</button>
+    <button id="lightbox-prev" type="button" aria-label="Anterior" class="lightbox-nav-btn left-2 md:left-6">‹</button>
     <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] rounded-xl object-contain shadow-2xl" />
+    <button id="lightbox-next" type="button" aria-label="Siguiente" class="lightbox-nav-btn right-2 md:right-6">›</button>
     <button id="lightbox-download" type="button" class="absolute bottom-6 md:bottom-10 inline-flex items-center gap-2 bg-white text-[#090909] text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#30e6e6] transition-colors">
       Descargar imagen
     </button>
@@ -536,19 +566,55 @@
     );
     document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 
-    // LIGHTBOX
+    // LIGHTBOX — infinite carousel + interactive zoom/pan
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxDownload = document.getElementById('lightbox-download');
-    let currentImageUrl = '';
-    let currentImageName = 'imagen.png';
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxCounter = document.getElementById('lightbox-counter');
 
-    function openLightbox(src, alt) {
-      currentImageUrl = src;
-      currentImageName = (alt || 'imagen').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '.png';
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
+    let galleryImgs = [];
+    let currentIndex = 0;
+    let zoomScale = 1;
+    let panX = 0;
+    let panY = 0;
+    let isPanning = false;
+    let panStartX = 0;
+    let panStartY = 0;
+
+    function resetZoom() {
+      zoomScale = 1;
+      panX = 0;
+      panY = 0;
+      lightboxImg.classList.remove('is-zoomed', 'is-panning');
+      lightboxImg.style.transform = 'none';
+    }
+
+    function applyZoom() {
+      lightboxImg.style.transform = zoomScale === 1 ? 'none' : `translate(${panX}px, ${panY}px) scale(${zoomScale})`;
+      lightboxImg.classList.toggle('is-zoomed', zoomScale !== 1);
+    }
+
+    function renderSlide() {
+      const img = galleryImgs[currentIndex];
+      resetZoom();
+      const name = (img.alt || 'imagen').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '.png';
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightboxImg.dataset.filename = name;
+      lightboxCounter.textContent = galleryImgs.length > 1 ? `${currentIndex + 1} / ${galleryImgs.length}` : '';
+    }
+
+    function goTo(delta) {
+      currentIndex = (currentIndex + delta + galleryImgs.length) % galleryImgs.length;
+      renderSlide();
+    }
+
+    function openLightbox(index) {
+      currentIndex = index;
+      renderSlide();
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -558,31 +624,76 @@
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      resetZoom();
     }
 
     lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => goTo(-1));
+    lightboxNext.addEventListener('click', () => goTo(1));
     lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('is-open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') goTo(-1);
+      if (e.key === 'ArrowRight') goTo(1);
+    });
+
+    // Wheel-to-zoom (desktop) — native pinch-zoom on touch devices works on its own via touch-action: pinch-zoom
+    lightboxImg.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const next = Math.min(4, Math.max(1, zoomScale - e.deltaY * 0.0015));
+      zoomScale = next;
+      if (zoomScale === 1) { panX = 0; panY = 0; }
+      applyZoom();
+    }, { passive: false });
+
+    // Double-click / double-tap to toggle zoom
+    lightboxImg.addEventListener('dblclick', () => {
+      zoomScale = zoomScale === 1 ? 2.2 : 1;
+      panX = 0; panY = 0;
+      applyZoom();
+    });
+
+    // Drag to pan when zoomed
+    lightboxImg.addEventListener('mousedown', (e) => {
+      if (zoomScale === 1) return;
+      isPanning = true;
+      panStartX = e.clientX - panX;
+      panStartY = e.clientY - panY;
+      lightboxImg.classList.add('is-panning');
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (!isPanning) return;
+      panX = e.clientX - panStartX;
+      panY = e.clientY - panStartY;
+      applyZoom();
+    });
+    window.addEventListener('mouseup', () => {
+      isPanning = false;
+      lightboxImg.classList.remove('is-panning');
+    });
 
     lightboxDownload.addEventListener('click', async () => {
+      const url = lightboxImg.src;
+      const filename = lightboxImg.dataset.filename || 'imagen.png';
       try {
-        const res = await fetch(currentImageUrl, { mode: 'cors' });
+        const res = await fetch(url, { mode: 'cors' });
         if (!res.ok) throw new Error('fetch failed');
         const blob = await res.blob();
         const blobUrl = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = blobUrl;
-        a.download = currentImageName;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
         a.remove();
         URL.revokeObjectURL(blobUrl);
       } catch (err) {
-        window.open(currentImageUrl, '_blank');
+        window.open(url, '_blank');
       }
     });
 
-    document.querySelectorAll('img.zoomable').forEach((img) => {
+    document.querySelectorAll('img.zoomable').forEach((img, idx) => {
       const wrap = document.createElement('div');
       wrap.className = 'zoomable-wrap group cursor-zoom-in';
       img.parentNode.insertBefore(wrap, img);
@@ -594,57 +705,27 @@
       overlay.innerHTML = '<span class="bg-white text-[#090909] rounded-full w-9 h-9 flex items-center justify-center text-base shadow">⤢</span>';
       wrap.appendChild(overlay);
 
-      wrap.addEventListener('click', () => openLightbox(img.src, img.alt));
+      galleryImgs.push(img);
+      wrap.addEventListener('click', () => openLightbox(idx));
     });
 
-    // LIVE TOKEN PREVIEW TOGGLE
+    if (galleryImgs.length <= 1) {
+      lightboxPrev.style.display = 'none';
+      lightboxNext.style.display = 'none';
+    }
+
+    // LIVE TOKEN PREVIEW TOGGLE — pure primitive/semantic CSS variable swap
     const tokenToggle = document.getElementById('token-toggle');
     const tokenToggleLabel = document.getElementById('token-toggle-label');
     const tokenCard = document.getElementById('token-preview-card');
-    const tokenPill = document.getElementById('token-pill');
-    const tokenPill2 = document.getElementById('token-pill-2');
-    const tokenBtnPrimary = document.getElementById('token-btn-primary');
-    const tokenBtnOutline = document.getElementById('token-btn-outline');
-    const tokenBtnSmall = document.getElementById('token-btn-small');
     let tokenDark = false;
-
-    function applyTokenTheme() {
-      tokenToggle.setAttribute('aria-pressed', String(tokenDark));
-      tokenToggle.querySelector('.token-switch').classList.toggle('is-dark', tokenDark);
-      tokenToggleLabel.textContent = tokenDark ? 'Dark mode' : 'Light mode';
-
-      if (tokenDark) {
-        tokenCard.classList.remove('bg-[#f2f2f7]', 'border-[#8e8e93]');
-        tokenCard.classList.add('bg-[#17171c]', 'border-black');
-        tokenPill.classList.remove('bg-[#1a7a4c]');
-        tokenPill.classList.add('bg-[#30e6e6]', 'text-[#090909]');
-        tokenPill2.classList.remove('bg-[#8e8e93]/20', 'text-[#17171c]');
-        tokenPill2.classList.add('bg-white/10', 'text-white');
-        [tokenBtnPrimary, tokenBtnSmall].forEach((b) => {
-          b.classList.remove('bg-[#17171c]');
-          b.classList.add('bg-[#30e6e6]', 'text-[#090909]');
-        });
-        tokenBtnOutline.classList.remove('text-[#17171c]', 'border-[#8e8e93]');
-        tokenBtnOutline.classList.add('text-white', 'border-white/40');
-      } else {
-        tokenCard.classList.add('bg-[#f2f2f7]', 'border-[#8e8e93]');
-        tokenCard.classList.remove('bg-[#17171c]', 'border-black');
-        tokenPill.classList.add('bg-[#1a7a4c]');
-        tokenPill.classList.remove('bg-[#30e6e6]', 'text-[#090909]');
-        tokenPill2.classList.add('bg-[#8e8e93]/20', 'text-[#17171c]');
-        tokenPill2.classList.remove('bg-white/10', 'text-white');
-        [tokenBtnPrimary, tokenBtnSmall].forEach((b) => {
-          b.classList.add('bg-[#17171c]');
-          b.classList.remove('bg-[#30e6e6]', 'text-[#090909]');
-        });
-        tokenBtnOutline.classList.add('text-[#17171c]', 'border-[#8e8e93]');
-        tokenBtnOutline.classList.remove('text-white', 'border-white/40');
-      }
-    }
 
     tokenToggle.addEventListener('click', () => {
       tokenDark = !tokenDark;
-      applyTokenTheme();
+      tokenToggle.setAttribute('aria-pressed', String(tokenDark));
+      tokenToggle.querySelector('.token-switch').classList.toggle('is-dark', tokenDark);
+      tokenToggleLabel.textContent = tokenDark ? 'Dark mode' : 'Light mode';
+      tokenCard.setAttribute('data-theme', tokenDark ? 'dark' : 'light');
     });
   </script>
 </body>
