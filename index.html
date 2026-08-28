@@ -47,6 +47,37 @@
   section[id] { scroll-margin-top: 84px; }
   .nav-link.is-active { background-color: rgb(0 0 0 / 0.08); }
   #mobile-menu { transition: max-height 0.25s ease, opacity 0.2s ease; }
+
+  /* Lightbox */
+  #lightbox { display: none; }
+  #lightbox.is-open { display: flex; }
+  #lightbox-img { animation: lightbox-in 0.25s ease-out; }
+  @keyframes lightbox-in { from { opacity: 0; transform: scale(0.96); } to { opacity: 1; transform: scale(1); } }
+  .zoomable-wrap { position: relative; }
+  .zoomable-overlay { pointer-events: none; }
+
+  /* Scroll reveal */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* Token preview toggle */
+  .token-switch { width: 44px; height: 24px; border-radius: 9999px; background: #d0d0d6; position: relative; transition: background-color 0.25s ease; flex-shrink: 0; }
+  .token-switch.is-dark { background: #17171c; }
+  .token-switch-knob { position: absolute; top: 2px; left: 2px; width: 20px; height: 20px; border-radius: 9999px; background: #fff; transition: transform 0.25s ease; box-shadow: 0 1px 2px rgba(0,0,0,0.3); }
+  .token-switch.is-dark .token-switch-knob { transform: translateX(20px); background: #30e6e6; }
+  .token-preview-card { transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; }
+  .token-btn { transition: transform 0.15s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+  .token-btn:hover { transform: translateY(-2px); }
+  .token-btn:active { transform: translateY(0); }
+  .token-btn-arrow { display: inline-block; transition: transform 0.2s ease; }
+  .token-btn:hover .token-btn-arrow { transform: translateX(3px); }
+  .token-pill { transition: background-color 0.3s ease, color 0.3s ease; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    #lightbox-img { animation: none; }
+    .token-btn:hover { transform: none; }
+  }
 </style>
 </head>
 <body class="bg-white text-[#17171c]">
@@ -131,14 +162,14 @@
 
       <!-- PROJECT 1: MOOVEAR -->
       <div class="flex flex-col gap-16">
-        <div class="flex flex-col md:flex-row gap-6 items-center">
-          <div class="font-display text-5xl md:text-7xl shrink-0">1. Moovear</div>
-          <p class="text-xl md:text-2xl leading-snug flex-1">How we optimized medical transport traceability to improve Moovear's profitability and service.</p>
+        <div class="reveal flex flex-col md:flex-row gap-6 items-start text-left">
+          <div class="font-display text-5xl shrink-0">1. Moovear</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1 md:mt-2">How we optimized medical transport traceability to improve Moovear's profitability and service.</p>
         </div>
 
-        <div class="bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
+        <div class="reveal bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
           <h3 class="font-display text-2xl text-center">Transport management platform</h3>
-          <img src="https://www.figma.com/api/mcp/asset/22740756-e0ab-4f21-8649-06a480069603.png" alt="Transport management platform" class="border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
+          <img src="https://www.figma.com/api/mcp/asset/22740756-e0ab-4f21-8649-06a480069603.png" alt="Transport management platform" class="zoomable border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
         </div>
         <hr class="border-t border-[#e0e0e5]" />
 
@@ -158,36 +189,36 @@
             <h3 class="font-display text-3xl md:text-4xl">Main User Flows</h3>
             <p class="font-display text-xl md:text-2xl mt-6">1.1 Trip traceability for the driver.</p>
           </div>
-          <div class="bg-[#f2f2f7] rounded-3xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+          <div class="reveal bg-[#f2f2f7] rounded-3xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
             <figure class="flex flex-col gap-4 items-center sm:items-start">
               <figcaption class="text-base">Home Screen</figcaption>
-              <img src="https://www.figma.com/api/mcp/asset/198e838b-4253-436f-abf1-3c1757b5e5f7.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Home Screen" />
+              <img src="https://www.figma.com/api/mcp/asset/198e838b-4253-436f-abf1-3c1757b5e5f7.png" class="zoomable border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Home Screen" />
             </figure>
             <figure class="flex flex-col gap-4 items-center sm:items-start">
               <figcaption class="text-base">Detail</figcaption>
-              <img src="https://www.figma.com/api/mcp/asset/2165269a-e0e2-4018-a498-ac1634b5a04d.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Detail" />
+              <img src="https://www.figma.com/api/mcp/asset/2165269a-e0e2-4018-a498-ac1634b5a04d.png" class="zoomable border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Detail" />
             </figure>
             <figure class="flex flex-col gap-4 items-center sm:items-start">
               <figcaption class="text-base">Navigation</figcaption>
-              <img src="https://www.figma.com/api/mcp/asset/0be88b71-d70a-43e8-a86f-12c05dd64d0d.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Navigation" />
+              <img src="https://www.figma.com/api/mcp/asset/0be88b71-d70a-43e8-a86f-12c05dd64d0d.png" class="zoomable border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Navigation" />
             </figure>
             <figure class="flex flex-col gap-4 items-center sm:items-start">
               <figcaption class="text-base">Trip Reconciliation</figcaption>
-              <img src="https://www.figma.com/api/mcp/asset/5b7e5d95-e29f-460d-aada-dd8c279725cb.png" class="border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Trip Reconciliation" />
+              <img src="https://www.figma.com/api/mcp/asset/5b7e5d95-e29f-460d-aada-dd8c279725cb.png" class="zoomable border-4 border-black rounded-2xl w-full max-w-[200px]" alt="Trip Reconciliation" />
             </figure>
           </div>
         </div>
 
-        <div>
+        <div class="reveal">
           <h3 class="font-display text-4xl md:text-5xl tracking-tight">Some numbers...</h3>
-          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-center">
+          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-left">
             <div class="flex flex-col gap-3">
-              <p class="text-5xl md:text-7xl tracking-tight">700</p>
-              <p class="text-base md:text-xl">Trips per day that became audited</p>
+              <p class="font-display text-5xl md:text-7xl tracking-tight">700</p>
+              <p class="text-base md:text-xl text-[#73737a]">Trips per day that became audited</p>
             </div>
             <div class="flex flex-col gap-3">
-              <p class="text-5xl md:text-7xl tracking-tight">19600</p>
-              <p class="text-base md:text-xl">Trips per month that are traceable</p>
+              <p class="font-display text-5xl md:text-7xl tracking-tight">19600</p>
+              <p class="text-base md:text-xl text-[#73737a]">Trips per month that are traceable</p>
             </div>
           </div>
         </div>
@@ -197,49 +228,49 @@
 
       <!-- PROJECT 2: SAS MOBILE -->
       <div class="flex flex-col gap-16">
-        <div class="flex flex-col md:flex-row gap-6 items-center">
-          <div class="font-display text-5xl md:text-7xl shrink-0">2. SAS mobile</div>
-          <p class="text-xl md:text-2xl leading-snug flex-1">From a lookup app to a self-service platform for workplace accidents</p>
+        <div class="reveal flex flex-col md:flex-row gap-6 items-start text-left">
+          <div class="font-display text-5xl shrink-0">2. SAS mobile</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1 md:mt-2">From a lookup app to a self-service platform for workplace accidents</p>
         </div>
 
         <div class="flex flex-col gap-6">
           <h3 class="font-display text-3xl md:text-4xl">Main User Flows</h3>
           <p class="font-display text-xl md:text-2xl -mt-4">2.1 Home redesigns and dark mode</p>
-          <div class="bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+          <div class="reveal bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
             <div class="flex flex-col gap-6">
               <p class="text-base">Home Screen</p>
               <div class="grid grid-cols-2 gap-4 max-w-[360px]">
-                <img src="https://www.figma.com/api/mcp/asset/bce70e88-5e7f-4cda-bf78-5e78bf8443b8.png" class="border-[3px] border-black rounded-2xl w-full" alt="Home light" />
-                <img src="https://www.figma.com/api/mcp/asset/bc2b1fe0-ec1f-4501-aeb3-3b7274ca10c1.png" class="border-[3px] border-black rounded-2xl w-full" alt="Home dark" />
+                <img src="https://www.figma.com/api/mcp/asset/bce70e88-5e7f-4cda-bf78-5e78bf8443b8.png" class="zoomable border-[3px] border-black rounded-2xl w-full" alt="Home light" />
+                <img src="https://www.figma.com/api/mcp/asset/bc2b1fe0-ec1f-4501-aeb3-3b7274ca10c1.png" class="zoomable border-[3px] border-black rounded-2xl w-full" alt="Home dark" />
               </div>
             </div>
             <div class="flex flex-col gap-6">
               <p class="text-base">Detail</p>
               <div class="grid grid-cols-2 gap-4 max-w-[360px]">
-                <img src="https://www.figma.com/api/mcp/asset/8e20ffcd-09fa-440b-8992-cd0d34925043.png" class="border-[3px] border-black rounded-2xl w-full" alt="Detail light" />
-                <img src="https://www.figma.com/api/mcp/asset/370f02e9-5fed-48ab-beea-82da8bff3202.png" class="border-[3px] border-black rounded-2xl w-full" alt="Detail dark" />
+                <img src="https://www.figma.com/api/mcp/asset/8e20ffcd-09fa-440b-8992-cd0d34925043.png" class="zoomable border-[3px] border-black rounded-2xl w-full" alt="Detail light" />
+                <img src="https://www.figma.com/api/mcp/asset/370f02e9-5fed-48ab-beea-82da8bff3202.png" class="zoomable border-[3px] border-black rounded-2xl w-full" alt="Detail dark" />
               </div>
             </div>
           </div>
         </div>
 
         <h3 class="font-display text-2xl md:text-3xl">Self-service features implemented</h3>
-        <div class="bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+        <div class="reveal bg-[#f2f2f7] rounded-2xl p-6 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Reimbursement Request</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/da783331-2b87-4c68-8ff2-623a5d78eced.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursement Request" />
+            <img src="https://www.figma.com/api/mcp/asset/da783331-2b87-4c68-8ff2-623a5d78eced.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursement Request" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Reimbursements Home Screen</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/06465c8f-9c80-4c92-b44c-c05b62821915.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursements Home Screen" />
+            <img src="https://www.figma.com/api/mcp/asset/06465c8f-9c80-4c92-b44c-c05b62821915.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Reimbursements Home Screen" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Orthopedic Part Request</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/aa942207-fee8-49bd-9656-eb0e8d0a1474.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Request" />
+            <img src="https://www.figma.com/api/mcp/asset/aa942207-fee8-49bd-9656-eb0e8d0a1474.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Request" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Orthopedic Part Detail</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/7c4f6ef4-53ee-45a5-990f-e8aa4e28a382.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Detail" />
+            <img src="https://www.figma.com/api/mcp/asset/7c4f6ef4-53ee-45a5-990f-e8aa4e28a382.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Orthopedic Part Detail" />
           </figure>
         </div>
 
@@ -254,21 +285,21 @@
           </div>
         </div>
 
-        <a href="https://drone-slush-22585694.figma.site" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 text-lg text-[#090909] underline underline-offset-4 decoration-1 hover:text-[#0a8f8f] transition-colors w-fit">
-          <span aria-hidden="true">→</span>
+        <a href="https://drone-slush-22585694.figma.site" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 text-lg text-[#090909] underline underline-offset-4 decoration-1 hover:text-[#0a8f8f] transition-colors w-fit">
+          <span aria-hidden="true" class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
           Prototipo funcionalidad Solicitud Pieza Ortopédica 1.0
         </a>
 
-        <div>
+        <div class="reveal">
           <h3 class="font-display text-4xl md:text-5xl tracking-tight">Some numbers...</h3>
-          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-center">
+          <div class="flex flex-col sm:flex-row gap-8 mt-6 text-left">
             <div class="flex flex-col gap-3">
-              <p class="text-5xl md:text-7xl tracking-tight">183</p>
-              <p class="text-base md:text-xl">active users since going live</p>
+              <p class="font-display text-5xl md:text-7xl tracking-tight">183</p>
+              <p class="text-base md:text-xl text-[#73737a]">active users since going live</p>
             </div>
             <div class="flex flex-col gap-3">
-              <p class="text-5xl md:text-7xl tracking-tight">120</p>
-              <p class="text-base md:text-xl">New users in the last month</p>
+              <p class="font-display text-5xl md:text-7xl tracking-tight">120</p>
+              <p class="text-base md:text-xl text-[#73737a]">New users in the last month</p>
             </div>
           </div>
         </div>
@@ -278,14 +309,14 @@
 
       <!-- PROJECT 3: MEDLAB -->
       <div class="flex flex-col gap-16">
-        <div class="flex flex-col md:flex-row gap-6 items-center">
-          <div class="font-display text-5xl md:text-7xl shrink-0">3. Medlab</div>
-          <p class="text-xl md:text-2xl leading-snug flex-1">How we turned a telemedicine app into a complex HRMS.</p>
+        <div class="reveal flex flex-col md:flex-row gap-6 items-start text-left">
+          <div class="font-display text-5xl shrink-0">3. Medlab</div>
+          <p class="text-xl md:text-2xl leading-snug flex-1 md:mt-2">How we turned a telemedicine app into a complex HRMS.</p>
         </div>
 
-        <div class="bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
+        <div class="reveal bg-gradient-to-b from-[rgba(48,230,230,0.1)] to-transparent rounded-2xl flex flex-col items-center gap-8 py-12 px-4">
           <h3 class="font-display text-2xl text-center">Payslip management</h3>
-          <img src="https://www.figma.com/api/mcp/asset/441cd7f9-ea7b-4dfd-a5c2-1f9ed2f023df.png" alt="Payslip management" class="border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
+          <img src="https://www.figma.com/api/mcp/asset/441cd7f9-ea7b-4dfd-a5c2-1f9ed2f023df.png" alt="Payslip management" class="zoomable border-[3px] border-black rounded-2xl w-full max-w-3xl object-cover" />
         </div>
 
         <div>
@@ -293,22 +324,22 @@
           <p class="font-display text-xl md:text-2xl mt-6">3.1 Core function: requesting workplace leave</p>
         </div>
 
-        <div class="bg-[#f2f2f7] rounded-2xl p-6 md:p-10 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
+        <div class="reveal bg-[#f2f2f7] rounded-2xl p-6 md:p-10 grid gap-8" style="grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));">
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Home Screen</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/41348077-642c-40f4-8557-62729be7ca75.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Home Screen" />
+            <img src="https://www.figma.com/api/mcp/asset/41348077-642c-40f4-8557-62729be7ca75.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Home Screen" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Interactive Calendar</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/ea87984d-6cdd-4b0b-8efa-d69fa7398606.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Interactive Calendar" />
+            <img src="https://www.figma.com/api/mcp/asset/ea87984d-6cdd-4b0b-8efa-d69fa7398606.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Interactive Calendar" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Document Upload</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/b5997dad-4391-4bfb-953e-352ec3e429c5.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Document Upload" />
+            <img src="https://www.figma.com/api/mcp/asset/b5997dad-4391-4bfb-953e-352ec3e429c5.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Document Upload" />
           </figure>
           <figure class="flex flex-col gap-4 items-center sm:items-start">
             <figcaption class="text-base">Summary</figcaption>
-            <img src="https://www.figma.com/api/mcp/asset/89dff3cf-c4e7-4a5f-967c-1daafc905945.png" class="border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Summary" />
+            <img src="https://www.figma.com/api/mcp/asset/89dff3cf-c4e7-4a5f-967c-1daafc905945.png" class="zoomable border-[3px] border-black rounded-3xl w-full max-w-[180px]" alt="Summary" />
           </figure>
         </div>
 
@@ -325,8 +356,8 @@
           </div>
         </div>
 
-        <a href="https://drone-slush-22585694.figma.site/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 text-lg text-[#090909] underline underline-offset-4 decoration-1 hover:text-[#0a8f8f] transition-colors w-fit">
-          <span aria-hidden="true">→</span>
+        <a href="https://drone-slush-22585694.figma.site/" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 text-lg text-[#090909] underline underline-offset-4 decoration-1 hover:text-[#0a8f8f] transition-colors w-fit">
+          <span aria-hidden="true" class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
           Prototipo funcionalidad Legajos 1.0
         </a>
 
@@ -334,14 +365,44 @@
 
         <h2 class="font-display text-4xl md:text-6xl">UI and Design Systems</h2>
 
-        <div class="flex flex-col gap-4">
+        <div class="reveal flex flex-col gap-4">
           <h3 class="font-bold text-xl">Tokenization</h3>
           <p class="text-[#73737a] text-base leading-relaxed">The system is built in a tokenized way, across two layers: primitives (color, spacing, and typography in their raw form, with no semantic meaning) and semantic tokens (which inherit from primitives and convey intent, e.g. color/status/approved or color/status/rejected). This structure keeps visual consistency across SAS Mobile, MedLab, and Traslada, and lets the system scale to new markets and brands without rewriting styles from scratch.</p>
         </div>
 
-        <div class="flex flex-col md:flex-row gap-6">
-          <img src="https://www.figma.com/api/mcp/asset/1e5384a5-32b4-4fb2-9fb3-006102a4f67c.png" class="border border-black rounded-2xl w-full md:w-1/2 object-cover" alt="Tokens" />
-          <img src="https://www.figma.com/api/mcp/asset/44a49c3e-2a07-4c5e-a6aa-e22fc7b37b73.png" class="w-full md:w-1/2 object-contain" alt="Design system" />
+        <div class="reveal flex flex-col md:flex-row gap-6">
+          <img src="https://www.figma.com/api/mcp/asset/1e5384a5-32b4-4fb2-9fb3-006102a4f67c.png" class="zoomable border border-black rounded-2xl w-full md:w-1/2 object-cover" alt="Tokens" />
+          <img src="https://www.figma.com/api/mcp/asset/44a49c3e-2a07-4c5e-a6aa-e22fc7b37b73.png" class="zoomable w-full md:w-1/2 object-contain" alt="Design system" />
+        </div>
+
+        <!-- LIVE TOKEN PREVIEW -->
+        <div class="reveal flex flex-col gap-4">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h3 class="font-bold text-xl">Tokens in action</h3>
+            <button id="token-toggle" type="button" class="inline-flex items-center gap-3 text-sm font-medium" aria-pressed="false">
+              <span id="token-toggle-label">Light mode</span>
+              <span class="token-switch"><span class="token-switch-knob"></span></span>
+            </button>
+          </div>
+          <p class="text-[#73737a] text-base leading-relaxed">Same component, same semantic tokens — only the underlying values swap. Toggle it to see the theme layer at work.</p>
+
+          <div id="token-preview-card" class="token-preview-card bg-[#f2f2f7] border border-[#8e8e93] rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-10">
+            <div class="flex flex-col gap-3">
+              <span id="token-pill" class="token-pill bg-[#1a7a4c] text-white text-xs font-medium px-3 py-1.5 rounded-full w-fit">Aprobado</span>
+              <span id="token-pill-2" class="token-pill bg-[#8e8e93]/20 text-[#17171c] text-xs font-medium px-3 py-1.5 rounded-full w-fit">Pendiente</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <button id="token-btn-primary" type="button" class="token-btn bg-[#17171c] text-white text-sm font-medium pl-4 pr-3 py-2.5 rounded-full inline-flex items-center gap-2">
+                Volver al inicio <span class="token-btn-arrow">→</span>
+              </button>
+              <button id="token-btn-outline" type="button" class="token-btn bg-transparent text-[#17171c] border border-[#8e8e93] text-sm font-medium pl-4 pr-3 py-2.5 rounded-full inline-flex items-center gap-2">
+                Volver al inicio <span class="token-btn-arrow">→</span>
+              </button>
+              <button id="token-btn-small" type="button" class="token-btn bg-[#17171c] text-white text-xs font-medium pl-3 pr-2.5 py-1.5 rounded-full inline-flex items-center gap-1.5">
+                Volver al inicio <span class="token-btn-arrow">→</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -403,6 +464,15 @@
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="fixed inset-0 z-[100] items-center justify-center bg-black/90 backdrop-blur-sm p-4 md:p-10" role="dialog" aria-modal="true" aria-hidden="true">
+    <button id="lightbox-close" type="button" aria-label="Cerrar" class="absolute top-4 right-4 md:top-8 md:right-8 text-white/80 hover:text-white w-10 h-10 flex items-center justify-center rounded-full hover:bg-white/10 transition-colors text-2xl leading-none">✕</button>
+    <img id="lightbox-img" src="" alt="" class="max-w-full max-h-[75vh] rounded-xl object-contain shadow-2xl" />
+    <button id="lightbox-download" type="button" class="absolute bottom-6 md:bottom-10 inline-flex items-center gap-2 bg-white text-[#090909] text-sm font-medium px-5 py-2.5 rounded-full hover:bg-[#30e6e6] transition-colors">
+      Descargar imagen
+    </button>
+  </div>
+
   <script>
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -451,6 +521,131 @@
       { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
     );
     sections.forEach((section) => observer.observe(section));
+
+    // SCROLL REVEAL
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -8% 0px', threshold: 0.1 }
+    );
+    document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+    // LIGHTBOX
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxDownload = document.getElementById('lightbox-download');
+    let currentImageUrl = '';
+    let currentImageName = 'imagen.png';
+
+    function openLightbox(src, alt) {
+      currentImageUrl = src;
+      currentImageName = (alt || 'imagen').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') + '.png';
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox(); });
+
+    lightboxDownload.addEventListener('click', async () => {
+      try {
+        const res = await fetch(currentImageUrl, { mode: 'cors' });
+        if (!res.ok) throw new Error('fetch failed');
+        const blob = await res.blob();
+        const blobUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = blobUrl;
+        a.download = currentImageName;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(blobUrl);
+      } catch (err) {
+        window.open(currentImageUrl, '_blank');
+      }
+    });
+
+    document.querySelectorAll('img.zoomable').forEach((img) => {
+      const wrap = document.createElement('div');
+      wrap.className = 'zoomable-wrap group cursor-zoom-in';
+      img.parentNode.insertBefore(wrap, img);
+      wrap.appendChild(img);
+
+      const overlay = document.createElement('div');
+      overlay.className = 'zoomable-overlay absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100';
+      overlay.style.borderRadius = getComputedStyle(img).borderRadius;
+      overlay.innerHTML = '<span class="bg-white text-[#090909] rounded-full w-9 h-9 flex items-center justify-center text-base shadow">⤢</span>';
+      wrap.appendChild(overlay);
+
+      wrap.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    // LIVE TOKEN PREVIEW TOGGLE
+    const tokenToggle = document.getElementById('token-toggle');
+    const tokenToggleLabel = document.getElementById('token-toggle-label');
+    const tokenCard = document.getElementById('token-preview-card');
+    const tokenPill = document.getElementById('token-pill');
+    const tokenPill2 = document.getElementById('token-pill-2');
+    const tokenBtnPrimary = document.getElementById('token-btn-primary');
+    const tokenBtnOutline = document.getElementById('token-btn-outline');
+    const tokenBtnSmall = document.getElementById('token-btn-small');
+    let tokenDark = false;
+
+    function applyTokenTheme() {
+      tokenToggle.setAttribute('aria-pressed', String(tokenDark));
+      tokenToggle.querySelector('.token-switch').classList.toggle('is-dark', tokenDark);
+      tokenToggleLabel.textContent = tokenDark ? 'Dark mode' : 'Light mode';
+
+      if (tokenDark) {
+        tokenCard.classList.remove('bg-[#f2f2f7]', 'border-[#8e8e93]');
+        tokenCard.classList.add('bg-[#17171c]', 'border-black');
+        tokenPill.classList.remove('bg-[#1a7a4c]');
+        tokenPill.classList.add('bg-[#30e6e6]', 'text-[#090909]');
+        tokenPill2.classList.remove('bg-[#8e8e93]/20', 'text-[#17171c]');
+        tokenPill2.classList.add('bg-white/10', 'text-white');
+        [tokenBtnPrimary, tokenBtnSmall].forEach((b) => {
+          b.classList.remove('bg-[#17171c]');
+          b.classList.add('bg-[#30e6e6]', 'text-[#090909]');
+        });
+        tokenBtnOutline.classList.remove('text-[#17171c]', 'border-[#8e8e93]');
+        tokenBtnOutline.classList.add('text-white', 'border-white/40');
+      } else {
+        tokenCard.classList.add('bg-[#f2f2f7]', 'border-[#8e8e93]');
+        tokenCard.classList.remove('bg-[#17171c]', 'border-black');
+        tokenPill.classList.add('bg-[#1a7a4c]');
+        tokenPill.classList.remove('bg-[#30e6e6]', 'text-[#090909]');
+        tokenPill2.classList.add('bg-[#8e8e93]/20', 'text-[#17171c]');
+        tokenPill2.classList.remove('bg-white/10', 'text-white');
+        [tokenBtnPrimary, tokenBtnSmall].forEach((b) => {
+          b.classList.add('bg-[#17171c]');
+          b.classList.remove('bg-[#30e6e6]', 'text-[#090909]');
+        });
+        tokenBtnOutline.classList.add('text-[#17171c]', 'border-[#8e8e93]');
+        tokenBtnOutline.classList.remove('text-white', 'border-white/40');
+      }
+    }
+
+    tokenToggle.addEventListener('click', () => {
+      tokenDark = !tokenDark;
+      applyTokenTheme();
+    });
   </script>
 </body>
 </html>
